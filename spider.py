@@ -13,6 +13,8 @@ def get_source(url):
 def crawl(url):
 	links = get_source(url)
 
+	#for link in links.find_all('a'):
+
 	for link in links.find_all('a',attrs={'href': re.compile("^https://")}):
 		link = link.get("href")
 
