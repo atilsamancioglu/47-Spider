@@ -16,12 +16,14 @@ def crawl(url):
 	for link in links.find_all('a',attrs={'href': re.compile("^https://")}):
 		link = link.get("href")
 
-		if "#" in link:
-			link = link.split("#")[0]
+		if link:
+			
+			if "#" in link:
+				link = link.split("#")[0]
 
-		if targetUrl in link and link not in foundLinks:
-			foundLinks.append(link)
-			print ("Found url --->",link)
-			crawl(link)
+			if targetUrl in link and link not in foundLinks:
+				foundLinks.append(link)
+				print ("Found url --->",link)
+				crawl(link)
 
 crawl(targetUrl)
